@@ -7,8 +7,8 @@ for R(H_1,H_2,...H_t;r).
 from math import floor, ceil
 
 """Function to compute the weak chromatic number of a hypergraph.
-   param: order The order of the graph e.g. the number of vertices.
-   param: uniformity The uniformity of the graph, e.g. how many vertices each hyperedge
+   param: order The order of the graph, the number of vertices.
+   param: uniformity The uniformity of the graph, how many vertices each hyperedge
    contains.  
 """
 def weak_chromatic(order,uniformity):
@@ -17,8 +17,8 @@ def weak_chromatic(order,uniformity):
 
 
 """Function to compute the chromatic surplus of a hypergraph.
-   param: order The order of the graph e.g. the number of vertices.
-   param: uniformity The uniformity of the graph, e.g. how many vertices each hyperedge
+   param: order The order of the graph,the number of vertices.
+   param: uniformity The uniformity of the graph, how many vertices each hyperedge
    contains.  
 """
 def chromatic_surplus(order, uniformity):
