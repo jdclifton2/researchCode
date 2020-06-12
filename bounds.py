@@ -30,6 +30,14 @@ def chromatic_surplus(order, uniformity):
    return surplus
 
 """
+The formula for R(P_m, P_n; 3).
+param: path1_size The size of the first path. The number of edges of the first path.
+param: path2_size The size of the second path. The number of edges of the second path. 
+"""
+def path_bound(path1_size, path2_size):
+   return 2 * path1_size + floor(path2_size/2)
+
+"""
 TODO: Finish programming the lower bound. Need a formula for determining the number of edges in
 a tree. 
 """
@@ -41,7 +49,7 @@ def lower_bound(tree_order,tree2_order, uniformity, *args):
    
 
 
-  
+print(path_bound(2,2)) 
 
 
 
