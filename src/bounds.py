@@ -12,7 +12,6 @@ from math import floor, ceil
    contains.  
 """
 def weak_chromatic(order,uniformity):
-
    return ceil(order/(uniformity - 1))
 
 
@@ -65,6 +64,7 @@ def collection_of_trees_upper(uniformity, *args):
    sum_of_sizes = sum(sizes) - len(sizes)
 
    return max_of_sizes + 1 + sum_of_sizes
+
 
 """
 This function will generate all possible orders for a given uniformity. These orders are for a 

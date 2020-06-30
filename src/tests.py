@@ -3,7 +3,8 @@ import bounds
 
 
 class TestBounds(unittest.TestCase):
-
+   
+   #Note that this bound only works for 3 uniform graphs. Any uniformity over 3 is purely for test
    def test_order_3(self):
       self.assertEqual(bounds.collection_of_trees_upper(3, 3, 3), 2)
    
@@ -18,7 +19,7 @@ class TestBounds(unittest.TestCase):
 
 
 class TestOrders(unittest.TestCase):
-
+   
    def test_3_uniform_size_2(self):
       self.assertEqual(bounds.possible_orders(3, 2), [3, 5])
 
