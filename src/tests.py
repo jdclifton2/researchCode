@@ -33,6 +33,8 @@ class TestOrders(unittest.TestCase):
 
    def test_5_uniform_size_3(self):
       self.assertEqual(bounds.possible_orders(5, 3), [5, 9, 13])
+
+
 if __name__ == '__main__':
    unittest.main()
 
