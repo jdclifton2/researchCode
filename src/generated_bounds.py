@@ -74,19 +74,25 @@ def generate_stars(uniformity, order):
 
 """
 Finds all combinations up to the size of the iterable.
+param: iterable The iterable object. 
+param: start_index The size of the smallest combinations. Will start here and go up to the size
+of the iterable.
+return: yields the next item in the combinations. if you want the full list, do 
+list(generate_combinations_upto(iterable, start_index))
 """
-def generate_combinations_upto(iterable):
+def generate_combinations_upto(iterable, start_index = 2):
    
    #Iterate through the iterable.
-   for k in range(len(iterable)):
+   if  start_index >= 0:
+      for k in range(start_index, len(iterable)):
      
-      combs = itertools.combinations(iterable,k)
-      #get combinations of size k up to len(iterable).
-      for comb in combs:
-         yield comb
+         combs = itertools.combinations(iterable,k)
+         #get combinations of size k up to len(iterable).
+         for comb in combs:
+            yield comb
 
    
-print(list("Debug generate_combinations_upto(1, 2, 3, 4)) {}".format(generate_combinations_upto([1,2,3,4]))))
+print("Debug generate_combinations_upto(1, 2, 3, 4)) {}".format(list(generate_combinations_upto([1,2,3,4]))))
 
 """
 This came from theorem 6. Only works if uniformity divides the order. order must be >= 2. 
@@ -94,7 +100,8 @@ This takes the uniformity and order of a complete graph. It then finds the numbe
 of the complete graph. After this, it gets the possible sizes for any star below the order of the
 complete graph. Next, it looks at all combinations of stars of order less than the order of the 
 complete graph.
- 
+param: uniformity The uniformity of the graph.
+param: The order of the graph.  
 """
 def theorem_6_stars(uniformity, order):
    #All possible one factors
@@ -131,7 +138,7 @@ def theorem_6_stars(uniformity, order):
 
                #print("Sum {} >= {}".format(sum(list(factorials)) - len(factorials), one_facs))
                #consider making this a yield statement?
-               print(comb)
+               yield comb
 
 
          #make a list so its mutable
@@ -142,6 +149,26 @@ def theorem_6_stars(uniformity, order):
          #if not 0 in l_comb:
             #if one_facs - sum(l_comb) == 0:
 
-generate_stars(3,9)
-theorem_6_stars(3,9)
+#generate_stars(3,9)
+"""
+This function prints the equality corresponding with a collection of star orders. 
+Example: If you pass in (3,9,[(1,2), (3,4)]),
+output will be
+R(S^3_1,1 S^3_1,2) >= 10
+R(S^3_1,3 S^3_1,4) >= 10
+param: uniformity The uniformity of a graph.
+param: order The order of a graph.
+param: star_orders A collection of orders corresponding with stars that produced a desired result.
+"""
+def ramsey_stars_string(uniformity, order, star_orders):
+   for comb in star_orders:
+      star_string =  ['R','(']
+      for num in comb:
+         star_string.append("S^{}_1,{} ".format(uniformity,num))
+      star_string.append(')')
+      print(''.join(star_string) + " >= {}".format(order + 1))
+
+
+#print("T^3_1,".join(list(theorem_6_stars(3,12))))
+ramsey_stars_string(4,12,theorem_6_stars(4,12))
 
