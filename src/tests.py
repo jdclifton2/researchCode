@@ -6,16 +6,16 @@ class TestBounds(unittest.TestCase):
    
    #Note that this bound only works for 3 uniform graphs. Any uniformity over 3 is purely for test
    def test_order_3(self):
-      self.assertEqual(bounds.collection_of_trees_upper(3, 3, 3), 2)
+      self.assertEqual(bounds.collection_of_trees_upper(3, [3, 3]), 2)
    
    def test_order_3_5_7(self):
-      self.assertEqual(bounds.collection_of_trees_upper(3, 3, 5, 7), 7)
+      self.assertEqual(bounds.collection_of_trees_upper(3, [3, 5, 7]), 7)
 
    def test_order_5_5_5(self):
-      self.assertEqual(bounds.collection_of_trees_upper(3, 5, 5, 5), 6)
+      self.assertEqual(bounds.collection_of_trees_upper(3, [5, 5, 5]), 6)
 
    def test_order_7_7_7(self):
-      self.assertEqual(bounds.collection_of_trees_upper(3, 7, 7, 7), 10)
+      self.assertEqual(bounds.collection_of_trees_upper(3, [7, 7, 7]), 10)
 
 
 class TestOrders(unittest.TestCase):
